@@ -49,7 +49,7 @@ Contact.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
 }
 
-// Business Logic for Addresses
+// Business Logic for Addresses ---------
 function Address (inputtedEmailAddress,inputtedPhysicalAddress) {
   this.emailAddresses = inputtedEmailAddress;
   this.physicalAddresses = inputtedPhysicalAddress;
@@ -116,10 +116,6 @@ $(document).ready(function() {
 
     $("#workEmail").remove();
     $("#workAddress").remove();
-
-    
-
-
     
     let newAddresses = new Address(inputtedEmailAddress,inputtedPhysicalAddress)
 
