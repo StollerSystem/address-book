@@ -79,6 +79,7 @@ function showContact(contactId) {
   $(".work-email-address").html(contact.newAddresses.emailAddresses[1]);
   $(".physical-home-address").html(contact.newAddresses.physicalAddresses[0]);
   $(".physical-work-address").html(contact.newAddresses.physicalAddresses[1]);
+  
   let buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" +  + contact.id + ">Delete</button>");
@@ -113,6 +114,13 @@ $(document).ready(function() {
     $("input#new-physical-home-address").val("");
     $("input#new-physical-work-address").val("");
 
+    $("#workEmail").remove();
+    $("#workAddress").remove();
+
+    
+
+
+    
     let newAddresses = new Address(inputtedEmailAddress,inputtedPhysicalAddress)
 
     let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber,newAddresses);
