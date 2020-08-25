@@ -38,17 +38,26 @@ AddressBook.prototype.deleteContact = function(id) {
 }
 
 // Business Logic for Contacts ---------
-function Contact(firstName, lastName, phoneNumber,emailAddress,physicalAddress) {
+function Contact(firstName, lastName, phoneNumber,newAddresses) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.phoneNumber = phoneNumber;
-  this.emailAddress = emailAddress;
-  this.physicalAddress = physicalAddress;
+  this.newAddresses = newAddresses;
+  // this.emailAddress = emailAddress;
+  // this.physicalAddress = physicalAddress;
 }
 
 Contact.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
 }
+
+// Business Logic for Addresses
+function Address (inputtedEmailAddress,inputtedPhysicalAddress) {
+  this.emailAddresses = [inputtedEmailAddress];
+  this.physicalAddresses = [inputtedPhysicalAddress];
+}
+
+
 
 // User Interface Logic ---------
 let addressBook = new AddressBook();
@@ -68,8 +77,8 @@ function showContact(contactId) {
   $(".first-name").html(contact.firstName);
   $(".last-name").html(contact.lastName);
   $(".phone-number").html(contact.phoneNumber);
-  $(".email-address").html(contact.emailAddress);
-  $(".physical-address").html(contact.physicalAddress);
+  $(".email-address").html(contact.newAddresses.emailAddresses[0]);
+  $(".physical-address").html(contact.newAddresses.physicalAddresses[0]);
   let buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" +  + contact.id + ">Delete</button>");
@@ -103,8 +112,30 @@ $(document).ready(function() {
     $("input#new-email-address").val("");
     $("input#new-physical-address").val("");
 
-    let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedEmailAddress, inputtedPhysicalAddress);
+    let newAddresses = new Address(inputtedEmailAddress,inputtedPhysicalAddress)
+
+    // let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedEmailAddress, inputtedPhysicalAddress);
+    let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber,newAddresses);
     addressBook.addContact(newContact);
     displayContactDetails(addressBook); 
   })
 })
+
+// Object within Object Test
+
+
+
+
+
+// emailAddress.forEach(function(store) {
+//   console.log(store.name + " sells:");
+//   store.products.forEach(function(product) {
+//     console.log(product.name);
+//   });
+//   console.log("\n");
+// });
+
+
+
+
+// 
