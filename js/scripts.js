@@ -54,7 +54,7 @@ Contact.prototype.fullName = function() {
 // Business Logic for Addresses
 function Address (inputtedEmailAddress,inputtedPhysicalAddress) {
   this.emailAddresses = inputtedEmailAddress;
-  this.physicalAddresses = [inputtedPhysicalAddress];
+  this.physicalAddresses = inputtedPhysicalAddress;
 }
 
 
@@ -79,7 +79,8 @@ function showContact(contactId) {
   $(".phone-number").html(contact.phoneNumber);
   $(".personal-email-address").html(contact.newAddresses.emailAddresses[0]);
   $(".work-email-address").html(contact.newAddresses.emailAddresses[1]);
-  $(".physical-address").html(contact.newAddresses.physicalAddresses[0]);
+  $(".physical-home-address").html(contact.newAddresses.physicalAddresses[0]);
+  $(".physical-work-address").html(contact.newAddresses.physicalAddresses[1]);
   let buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" +  + contact.id + ">Delete</button>");
@@ -106,16 +107,17 @@ $(document).ready(function() {
     const inputtedPhoneNumber = $("input#new-phone-number").val();
     // const inputtedEmailAddress = $("input#new-personal-email-address", "new-work-email-address").val();
 
-    const inputtedEmailAddress = [$("input#new-personal-email-address").val(), $("input#new-work-email-address").val()]
+    const inputtedEmailAddress = [$("input#new-personal-email-address").val(), $("input#new-work-email-address").val()];
 
-    const inputtedPhysicalAddress = $("input#new-physical-address").val();
+    const inputtedPhysicalAddress = [$("input#new-physical-home-address").val(), $("input#new-physical-work-address").val()];
   
     $("input#new-first-name").val("");
     $("input#new-last-name").val("");
     $("input#new-phone-number").val("");
     $("input#new-personal-email-address").val("");
     $("input#new-work-email-address").val("");
-    $("input#new-physical-address").val("");
+    $("input#new-physical-home-address").val("");
+    $("input#new-physical-work-address").val("");
 
     let newAddresses = new Address(inputtedEmailAddress,inputtedPhysicalAddress)
 
