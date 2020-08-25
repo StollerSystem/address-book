@@ -53,7 +53,7 @@ Contact.prototype.fullName = function() {
 
 // Business Logic for Addresses
 function Address (inputtedEmailAddress,inputtedPhysicalAddress) {
-  this.emailAddresses = [inputtedEmailAddress];
+  this.emailAddresses = inputtedEmailAddress;
   this.physicalAddresses = [inputtedPhysicalAddress];
 }
 
@@ -77,7 +77,8 @@ function showContact(contactId) {
   $(".first-name").html(contact.firstName);
   $(".last-name").html(contact.lastName);
   $(".phone-number").html(contact.phoneNumber);
-  $(".email-address").html(contact.newAddresses.emailAddresses[0]);
+  $(".personal-email-address").html(contact.newAddresses.emailAddresses[0]);
+  $(".work-email-address").html(contact.newAddresses.emailAddresses[1]);
   $(".physical-address").html(contact.newAddresses.physicalAddresses[0]);
   let buttons = $("#buttons");
   buttons.empty();
@@ -103,13 +104,17 @@ $(document).ready(function() {
     const inputtedFirstName = $("input#new-first-name").val();
     const inputtedLastName = $("input#new-last-name").val();
     const inputtedPhoneNumber = $("input#new-phone-number").val();
-    const inputtedEmailAddress = $("input#new-email-address").val();
+    // const inputtedEmailAddress = $("input#new-personal-email-address", "new-work-email-address").val();
+
+    const inputtedEmailAddress = [$("input#new-personal-email-address").val(), $("input#new-work-email-address").val()]
+
     const inputtedPhysicalAddress = $("input#new-physical-address").val();
   
     $("input#new-first-name").val("");
     $("input#new-last-name").val("");
     $("input#new-phone-number").val("");
-    $("input#new-email-address").val("");
+    $("input#new-personal-email-address").val("");
+    $("input#new-work-email-address").val("");
     $("input#new-physical-address").val("");
 
     let newAddresses = new Address(inputtedEmailAddress,inputtedPhysicalAddress)
