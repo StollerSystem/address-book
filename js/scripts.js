@@ -43,8 +43,6 @@ function Contact(firstName, lastName, phoneNumber,newAddresses) {
   this.lastName = lastName;
   this.phoneNumber = phoneNumber;
   this.newAddresses = newAddresses;
-  // this.emailAddress = emailAddress;
-  // this.physicalAddress = physicalAddress;
 }
 
 Contact.prototype.fullName = function() {
@@ -105,12 +103,8 @@ $(document).ready(function() {
     const inputtedFirstName = $("input#new-first-name").val();
     const inputtedLastName = $("input#new-last-name").val();
     const inputtedPhoneNumber = $("input#new-phone-number").val();
-    // const inputtedEmailAddress = $("input#new-personal-email-address", "new-work-email-address").val();
-
     const inputtedEmailAddress = [$("input#new-personal-email-address").val(), $("input#new-work-email-address").val()];
-
-    const inputtedPhysicalAddress = [$("input#new-physical-home-address").val(), $("input#new-physical-work-address").val()];
-  
+    const inputtedPhysicalAddress = [$("input#new-physical-home-address").val(), $("input#new-physical-work-address").val()];  
     $("input#new-first-name").val("");
     $("input#new-last-name").val("");
     $("input#new-phone-number").val("");
@@ -121,28 +115,8 @@ $(document).ready(function() {
 
     let newAddresses = new Address(inputtedEmailAddress,inputtedPhysicalAddress)
 
-    // let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedEmailAddress, inputtedPhysicalAddress);
     let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber,newAddresses);
     addressBook.addContact(newContact);
     displayContactDetails(addressBook); 
   })
 })
-
-// Object within Object Test
-
-
-
-
-
-// emailAddress.forEach(function(store) {
-//   console.log(store.name + " sells:");
-//   store.products.forEach(function(product) {
-//     console.log(product.name);
-//   });
-//   console.log("\n");
-// });
-
-
-
-
-// 
